@@ -1,5 +1,5 @@
 import numpy as np
-rng = np.random.default_rng(12345)
+# rng = np.random.default_rng(12345)
 
 def draw_samples(n):
     """
@@ -17,9 +17,9 @@ def draw_samples(n):
     out = np.zeros(n)
     for i in range(n):
         rand = np.random.uniform()
-        if rand < 0.25:
+        if rand <= 0.25:
             out[i] = 1.0
-        elif rand < 0.70:
+        elif rand <= 0.70:
             out[i] = 0.0
         else:
             out[i] = -1.0
