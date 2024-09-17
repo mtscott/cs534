@@ -44,7 +44,7 @@ def eval_linear2(trainx, trainy, valx, valy, testx, testy):
     trnvalx = np.append(trainx,valx)
     trnvaly = np.append(trainy, valy)
     # Create linear regression object
-    regr = linear_model.LinearRegression()
+    regr = LinearRegression()
 
     # Train the model using the training sets
     regr.fit(trnvalx, trnvaly)
@@ -72,7 +72,6 @@ def eval_linear2(trainx, trainy, valx, valy, testx, testy):
     }
     
     return ansdict
-    return 1
 
 def eval_ridge(trainx, trainy, valx, valy, testx,
 testy, alpha):
