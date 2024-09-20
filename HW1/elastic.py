@@ -21,19 +21,46 @@ class ElasticNet:
         self.eta = eta
         self.batch = batch
         self.epoch = epoch
+        self.beta = None    # Secret tool that will help us later
 
     def coef(self):
-        return 0
+        return self.beta
 
     def train(self, x, y):
+        n, p = np.shape(x)
+        rng = np.random.default_rng()
+
+        # combine x and y and shuffle so labels stay with data
+        xy = np.c_[np.array(x),np.array(y)]
+
         # Example dictionary
-        errdict = {'a': 1, 'b': 2, 'c': 3}
+        errdict = {}
 
-        # Append a new key-value pair
-        errdict['d'] = 4
+        # Initial Guess is M-P pseudoinverse 
+        #U, D, V = npla.svd(x)
+        # dinv = D / (D**2 + self.alpha)
+        #y = V.T @dinv @ U.T
+        beta = npla.pinv(x)@y
 
-        print(errdict)
+        for i in range(self.epoch + 1):
+            # Shuffle Data 
+            rng.shuffle(xy)
+
+            for start in range(0, n+1, self.batch):
+
+                stop = start + self.batch 
+                # Batch Data
+                xmini = xy[start:stop, :-1]
+                ymini = xy[start:stop, -1:]
+
+                beta -= self.eta * grad_step(xmini,ymini,beta, self.el,self.alpha,self.eta) / n
+
+            errdict[i] = loss(x,y, beta, self.el, self.alpha)
+
+        self.beta = beta
+
         return errdict
 
     def predict(self, x):
-        return 0
+        #return x
+        return x @ self.beta 

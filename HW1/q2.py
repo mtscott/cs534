@@ -6,8 +6,8 @@ from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.metrics import mean_squared_error, r2_score
 
 def preprocess_data(trainx, valx, testx):
-
-    return 1
+    # Normalize the Data
+    return trainx, valx, testx
 
 def eval_linear1(trainx, trainy, valx, valy, testx, testy):
     # Create linear regression object
@@ -41,8 +41,8 @@ def eval_linear1(trainx, trainy, valx, valy, testx, testy):
     return ansdict
 
 def eval_linear2(trainx, trainy, valx, valy, testx, testy):
-    trnvalx = np.append(trainx,valx)
-    trnvaly = np.append(trainy, valy)
+    trnvalx = np.concatenate((trainx,valx), axis=0)
+    trnvaly = np.concatenate((trainy, valy), axis=0)
     # Create linear regression object
     regr = LinearRegression()
 
