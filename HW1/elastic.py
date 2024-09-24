@@ -27,11 +27,12 @@ class ElasticNet:
         return self.beta
 
     def train(self, x, y):
-        n, p = np.shape(x)
+        n,p = np.shape(x)
         rng = np.random.default_rng()
 
         # combine x and y and shuffle so labels stay with data
-        xy = np.c_[np.array(x),np.array(y)]
+        xy = np.hstack((x, y.reshape(n,1)))
+        
 
         # Example dictionary
         errdict = {}
@@ -52,6 +53,7 @@ class ElasticNet:
                 # Batch Data
                 xmini = xy[start:stop, :-1]
                 ymini = xy[start:stop, -1:]
+                ymini = ymini.flatten()
 
                 beta -= self.eta * grad_step(xmini,ymini,beta, self.el,self.alpha,self.eta) / n
 
@@ -62,5 +64,4 @@ class ElasticNet:
         return errdict
 
     def predict(self, x):
-        #return x
         return x @ self.beta 

@@ -2,11 +2,19 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn import linear_model
+from sklearn import preprocessing
 from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.metrics import mean_squared_error, r2_score
 
 def preprocess_data(trainx, valx, testx):
-    # Normalize the Data
+    # Normalize the Data to Gaussian using scikit learn
+    scalar = preprocessing.StandardScaler()
+    scalar.fit(trainx)
+    trainx = scalar.transform(trainx)
+
+    valx = scalar.transform(valx)
+
+    testx = scalar.transform(testx)
     return trainx, valx, testx
 
 def eval_linear1(trainx, trainy, valx, valy, testx, testy):
