@@ -38,9 +38,7 @@ class ElasticNet:
         errdict = {}
 
         # Initial Guess is M-P pseudoinverse 
-        #U, D, V = npla.svd(x)
-        # dinv = D / (D**2 + self.alpha)
-        #y = V.T @dinv @ U.T
+        
         beta = npla.pinv(x)@y
 
         for i in range(self.epoch + 1):

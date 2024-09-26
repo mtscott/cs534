@@ -3,5 +3,5 @@ CONSULTING CODE WRITTEN BY OTHER STUDENTS
 OR LARGE LANGUAGE MODELS LIKE CHATGPT.
 Mitchell Scott
 
-I collaborated with the following classmates for this homework:
-<names of classmates>
+I collaborated with no classmates for this homework; however, I did attend both
+Swati and Ziyang's office hours.

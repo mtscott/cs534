@@ -87,6 +87,7 @@ def eval_ridge(trainx, trainy, valx, valy, testx, testy, alpha):
 
     # Train the model using the training sets
     ridg.fit(trainx, trainy)
+    print(ridg.coef_)
 
     # Make predictions using the testing set
     train_pred = ridg.predict(trainx)
@@ -119,6 +120,7 @@ def eval_lasso(trainx, trainy, valx, valy, testx, testy, alpha):
 
     # Train the model using the training sets
     lass.fit(trainx, trainy)
+    print(lass.coef_)
 
     # Make predictions using the testing set
     train_pred = lass.predict(trainx)
