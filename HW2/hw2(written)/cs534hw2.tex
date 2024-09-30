@@ -1,0 +1,272 @@
+\documentclass[a4paper,12pt]{article} 
+
+\usepackage[top = 2.5cm, bottom = 2.5cm, left = 2.5cm, right = 2.5cm]{geometry} 
+
+% packages
+\usepackage{amsmath, amsfonts, amsthm} % basic math packages
+\usepackage{tikz} % for making illustrations
+\usetikzlibrary{shapes.arrows, arrows, decorations.markings, positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{3d}
+\usepackage{graphicx} % for importing images
+\usepackage{xcolor} % more color options
+\usepackage{colortbl}
+\usepackage{multicol} % for making two-column lists
+\usepackage{hyperref} % for hyperlinking
+%\hypersetup{colorlinks=true, urlcolor=cyan,}
+\usepackage{mathabx}
+\usepackage{cleveref}
+\usepackage{subfig}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{bbm}
+\usepackage{fancyhdr}
+\usepackage{algorithm, algorithmicx, algpseudocode}
+\usepackage{stmaryrd}
+\usepackage{physics}
+
+
+% The following two packages - multirow and booktabs - are needed to create nice looking tables.
+\usepackage{multirow} % Multirow is for tables with multiple rows within one cell.
+\usepackage{booktabs} % For even nicer tables.
+
+% As we usually want to include some plots (.pdf files) we need a package for that.
+\usepackage{graphicx} 
+
+% The default setting of LaTeX is to indent new paragraphs. This is useful for articles. But not really nice for homework problem sets. The following command sets the indent to 0.
+\usepackage{setspace}
+\setlength{\parindent}{0in}
+
+% Package to place figures where you want them.
+\usepackage{float}
+
+% The fancyhdr package let's us create nice headers.
+\usepackage{fancyhdr}
+
+% theorems, lemmas, examples, etc.
+\newtheorem{theorem}{Theorem}[section]
+% \newtheorem{corollary}{Corollary}[theorem]
+% \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+
+\def\mydefb#1{\expandafter\def\csname bf#1\endcsname{\mathbf{#1}}}
+\def\mydefallb#1{\ifx#1\mydefallb\else\mydefb#1\expandafter\mydefallb\fi}
+\mydefallb aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ\mydefallb
+
+\def\mydefb#1{\expandafter\def\csname cal#1\endcsname{\mathcal{#1}}}
+\def\mydefallb#1{\ifx#1\mydefallb\else\mydefb#1\expandafter\mydefallb\fi}
+\mydefallb aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ\mydefallb
+
+%% Change this to just the normal N,Z,R,C,P,E
+\def\mydefb#1{\expandafter\def\csname bb#1\endcsname{\mathbb{#1}}}
+\def\mydefallb#1{\ifx#1\mydefallb\else\mydefb#1\expandafter\mydefallb\fi}
+\mydefallb CEGIKNPQRST\mydefallb
+
+\newcommand{\half}{\frac{1}{2}}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\prox}{prox}
+\newcommand{\matlab}{\textsc{Matlab}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3. Header (and Footer)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% To make our document nice we want a header and number the pages in the footer.
+
+\pagestyle{fancy} % With this command we can customize the header style.
+
+\fancyhf{} % This makes sure we do not have other information in our header or footer.
+
+\lhead{\footnotesize CS 534:  Homework  \# 2}% \lhead puts text in the top left corner. \footnotesize sets our font to a smaller size.
+
+%\rhead works just like \lhead (you can also use \chead)
+\rhead{\footnotesize Scott (mtscot4)} %<---- Fill in your lastnames.
+
+% Similar commands work for the footer (\lfoot, \cfoot and \rfoot).
+% We want to put our page number in the center.
+\cfoot{\footnotesize \thepage} 
+
+\begin{document}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Title section of the document
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	% For the title section we want to reproduce the title section of the Problem Set and add your names.
+	
+	\thispagestyle{empty} % This command disables the header on the first page. 
+	
+	\begin{tabular}{p{15.5cm}} % This is a simple tabular environment to align your text nicely 
+		{\large \sc CS 534:  Machine Learning} \\
+		Emory University \\ Fall 2024 \\ Prof. Eugene Agichtein \\
+		\hline % \hline produces horizontal lines.
+		\\
+	\end{tabular} % Our tabular environment ends here.
+	
+	\vspace*{0.3cm} % Now we want to add some vertical space in between the line and our title.
+	
+	\begin{center} % Everything within the center environment is centered.
+		{\Large \bf Homework \# 2} % <---- Don't forget to put in the right number
+		\vspace{2mm}
+		
+		% YOUR NAMES GO HERE
+		{\bf Mitchell Scott}\\ (mtscot4) % <---- Fill in your names here!
+		
+	\end{center}  
+	
+	\vspace{0.4cm}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	% Up until this point you only have to make minor changes for every week (Number of the homework). Your write up essentially starts here.
+	
+	\begin{enumerate}
+		\item {\bf  Written(10 pts) Bias-Variance Trade-off of LASSO}
+		While it is hard to write the explicit formula for the bias and variance of using LASSO, we can quantify the expected general trend. Make sure you justify the answers to the following questions for full points:
+		\begin{enumerate}
+			\item (Written) What is the general trend of the bias as $\lambda$ increases?
+			\begin{solution}
+				
+			\end{solution}
+			\item (Written) What about the general trend of the variance as $\lambda$ increases?
+			\begin{solution}
+				
+			\end{solution}
+			\item (Written) What is the bias at $\lambda = 0$?
+			\begin{solution}
+				
+			\end{solution}
+			\item (Written) What about the variance at $\lambda = \infty$?
+			\begin{solution}
+				
+			\end{solution}
+		\end{enumerate}
+			
+		\item{\bf Code+Written(40 pts) Spam classification using Naive Bayes and Standard Logistic Regression}
+		\begin{enumerate}
+			\item {\bf (Code) You will explore the effects of feature preprocessing and its impact on Naive Bayes and Standard (unregularized) logistic regression. Write the following functions to preprocess your data. You are free to use the \texttt{sklearn.preprocessing} module. Note that they functions should be independent of one another and should not build on each step/call each other. You should assume only the features are passed, in and not the target. These functions should accept numpy 2darray as input, return the preprocessed train and test set in numpy 2D array format (i.e., two return values)}.
+				\begin{enumerate}
+					\item {\bf  function \texttt{do\_nothing(train, test)} that takes a train and test set and does no preprocessing.}
+					\item {\bf function \texttt{do\_std(train, test)} that standardizes the columns so they all have mean 0 and unit variance. Note that you want to apply the transformation you learned on the training data to the test data. In other words, the test data may not have a mean of 0 and unit variance.}
+					\item {\bf function \texttt{do\_log(train, test)} that transforms the features using $\log(x_{ij} + 0.1)$ or a smoothed version of the natural logarithm.}
+					\item {\bf function \texttt{do\_bin(train, test)} that binarize the features using $\bbI_{(x_{ij} >0)}$.  (Note that $\bbI$ denotes the indicator function). In other words, if the feature has a positive value, the new feature is a 1, otherwise, the value a 0.}
+				\end{enumerate}
+
+			\begin{solution}
+				
+			\end{solution}
+			\item {\bf  (Code) Write a Python function \texttt{eva\_nb(trainx, trainy, testx, testy)} that fits a Naive Bayes model to the training. You can use \texttt{sklearn.naive\_bayes} module for this part. The function should accept as input numpy 2d arrays, and return a dictionary containing the accuracy and AUC for the training and test sets and the predicted probabilities for the test set: \\
+				\texttt{return {"train-acc":
+					train\_acc, "train-auc": train\_auc, "test-acc": test\_acc, "test-auc":
+					test\_auc, "test-prob": test\_prob}}. \\
+				The values for accuracy and AUC should be scalar
+				numeric values, while test-prob should be a numpy 1-d array with the predicted probability for the positive class 1, for the test.}
+			\begin{solution}
+			
+			\end{solution}
+			\item {\bf (Written) Fit a Naive Bayes model to each of the four preprocessing steps above using the code in 2b. Each preprocessing should be performed independently (i.e., use each of the functions you created in 2a on the original dataset). Report the accuracy rate of and AUC of NB on the training and test sets across the 4 preprocessing steps in a table.}	
+			\begin{solution}
+				
+			\end{solution}
+			\item {\bf(Code) Write a Python function \texttt{eval\_lr(trainx, trainy, testx, testy)} that fits a ordinary (no regularization) logistic regression model. The function should return a dictionary containing theaccuracy and AUC for the training and test sets and the predicted probabilities for the test: \\
+				
+				\texttt{\{"train-acc": train\_acc, "train-auc": train\_auc, "test-acc": test\_acc, "test-
+					auc": test\_auc, "test-prob": test\_prob\}}.\\
+				 Note that the values for accuracy and AUC should be scalar numeric values, while test-prob should either be a numpy 1-d array with the predicted probability of positive class 1 for the test set. The output will be the same format as 2b.}
+			\begin{solution}
+				I
+			\end{solution}
+			\item {\bf(Written) Fit ordinary (no regularization) logistic regression model with each of the four preprocessing steps above using the code in 2d. Report the accuracy rate and AUC on the training and test sets for the 4 preprocessing steps in a table}
+			\begin{solution}
+				
+				
+			\end{solution}
+			\item {\bf(Written) Plot the receiver operating characteristic (ROC) curves for the test data. You should generate 3 plots:}
+				\begin{itemize}
+				\item {\bf One plot containing the 4 Naive Bayes model curves representing each of the preprocessing steps.
+				\item One plot containing the 4 logistic regression model curves representing each of the preprocessing
+				steps.
+				\item One plot containing the best Naive Bayes model and the best logistic regression model curve. }
+				\end{itemize}
+			\begin{solution}
+			
+			\end{solution}
+			\item {\bf (Written) Given your results in 2c, 2e, and 2f, discuss how the preprocessing affects the models (Logistic and Naive Bayes) with regards to ROC, AUC, and accuracy. Also, comment on how Naive Bayes performance compares with logistic regression}
+			\begin{solution}
+				
+				
+			\end{solution}
+		\end{enumerate}
+		\item {\bf (50 pts) Exploring Model Selection Strategies for Logistic Regression with Regularization
+			We will be using the SPAM dataset from the previous part for this problem. You can preprocess the data
+			however you see fit, either based on the results of the previous problem or by introducing another
+			preprocessing method. The only requirement is that it is consistent throughout the rest of this problem.
+			For this problem, you are not allowed to use the \texttt{sklearn.model\_selection} module. All the specified functions should be in the file \texttt{‘q3.py’}.}
+	
+		\begin{enumerate}
+			\item {\bf (Written) How did you preprocess the data for this problem? Why?}
+			\begin{solution}
+				
+			\end{solution}
+			\item {\bf (Code) Implement the Python function generate \texttt{train\_val(x, y, valsize)} that given the validation size splits the data randomly into train and validation splits. The function should return a dictionary \\
+				\texttt{return \{"train-x": tr\_x, "train-y": tr\_y, "val-x": ts\_x, "val-y": ts\_y\}.}\\ 
+				The values for \texttt{‘train-x’} and \texttt{‘val-x’} are expected to be numpy 2d arrays of the same dimension as $x$, and split into the associated training and validation features. The values for \texttt{‘train-y’} and \texttt{‘val-y’} are expected to be a subset
+				of $y$ split accordingly. Note that each time this function is run, the splits could be different.}
+			\begin{solution}
+			
+			\end{solution}
+			\item {\bf Code) Implement the Python function \texttt{generate\_kfold(x, y, k)} that given the $k$, will split the data into $k$-folds. The function should return a single numpy 1-d array, containing the $k$ that each item index it belongs to (e.g., array([0,1,2,. . . ,2,1,1])) for $k=3$, which indicates item 0 belongs to fold 0, and item 1 belongs to fold 1, etc.}
+			\begin{solution}
+			
+			\end{solution}
+			\item {\bf(Code) .}
+			\begin{solution}
+				
+			\end{solution}
+			\item {\bf (Code) Implement the Python function\texttt{eval\_holdout(x, y, valsize, logistic)} which takes in the input (e.g., 3000 training samples from spam.train.dat), the input labels, and the validation size and (1) uses 3b to split $x$ and $y$ into train and validation, and (2) evaluates the performance using the logistic regressionmodel passed in as . You can assume the logistic regression classifier will be created using \texttt{sklearn.linear\_model.LogisticRegression} and initialized before passed to your method, so you can invoke it as usual. Your function should return a dictionary containing the accuracy and AUC for the training and validation sets using keys \texttt{‘train-acc’, ‘train-auc’, ‘val-acc’, ‘val-auc’}.}
+			\begin{solution}
+				
+			\end{solution}
+			\item {\bf (Code) Implement function \texttt{eval\_kfold(x, y, k, logistic)} which takes in number of folds $k$, (1) uses 3c to split the data, and (2) evaluates the performance using the input classifier logistic instantiated as logistic regression model. You can assume the logistic regression classifier will be created using \texttt{sklearn.linear\_model.LogisticRegression}. Your function should return a dictionary containing the accuracy and AUC for the training and validation sets using the following keys: \texttt{‘train-acc’, ‘train-auc’, ‘val-acc’, ‘val-auc’}. The accuracy and AUC for this part should be a averaged across the $k$ folds.}
+			\begin{solution}
+				
+				
+			\end{solution}
+			\item {\bf (Code) Implement the Python function \texttt{eval\_mccv(x, y, valsize, s, logistic)} that takes in the validation size and the sample size $s$ and uses the Monte Carlo cross-validation approach with $s$ rounds (i.e., use the validation/hold-out technique from 3d, $s$ times). The output should be the same format as 3e.}
+			\begin{solution}
+				
+			\end{solution}
+			\item {\bf Written) Fit Ridge and LASSO using the $K$-fold cross validation approach with $k = 5, 10$, and varying alpha (regularization weight). Report the best setting (combination of $k$ and regularization weight alpha)}
+			\begin{solution}
+			
+			\end{solution}
+			\item {\bf (Written) Fit Ridge and LASSO using the Monte Carlo Cross-validation (MCCV) approach with $s = 5, 10$ rounds and different valsize ratios, and varying alpha (regularization weight). Report the best setting (combination of valsize, $s$, alpha).}
+			\begin{solution}
+				
+			\end{solution}
+			\item {\bf (Written) Using the best parameters identified in 3g and 3h, re-train the regularized logistic regression models (Ridge, Lasso) using all the training data and report the performance on the test set in terms of AUC and accuracy in a table. You should have 4 models to compare: Ridge and Lasso trained using best parameters from k-fold and Ridge and Lasso using best parameters from MCCV. Compare how the model selection techniques compare to one another w.r.t. AUC and accuracy, predicted vs. actual test error, and computational complexity (running time).}
+		\end{enumerate}
+		
+	\end{enumerate}
+	
+	
+	
+	
+	\section*{Acknowledgements}
+	I would like to acknowledge that I attended both TA Swati's and TA Ziyang's office hours over the past week.
+	
+\end{document}
