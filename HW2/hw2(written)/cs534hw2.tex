@@ -167,7 +167,7 @@
 				\end{enumerate}
 
 			\begin{solution}
-				
+				Implimented in \texttt{`q2.py'}.
 			\end{solution}
 			\item {\bf  (Code) Write a Python function \texttt{eval\_nb(trainx, trainy, testx, testy)} that fits a Naive Bayes model to the training. You can use \texttt{sklearn.naive\_bayes} module for this part. The function should accept as input numpy 2d arrays, and return a dictionary containing the accuracy and AUC for the training and test sets and the predicted probabilities for the test set: \\
 				\texttt{return {"train-acc":
@@ -176,7 +176,7 @@
 				The values for accuracy and AUC should be scalar
 				numeric values, while test-prob should be a numpy 1-d array with the predicted probability for the positive class 1, for the test.}
 			\begin{solution}
-			
+					Implimented in \texttt{`q2.py'}.
 			\end{solution}
 			\item {\bf (Written) Fit a Naive Bayes model to each of the four preprocessing steps above using the code in 2b. Each preprocessing should be performed independently (i.e., use each of the functions you created in 2a on the original dataset). Report the accuracy rate of and AUC of NB on the training and test sets across the 4 preprocessing steps in a table.}	
 			\begin{solution}
@@ -188,7 +188,7 @@
 					auc": test\_auc, "test-prob": test\_prob\}}.\\
 				 Note that the values for accuracy and AUC should be scalar numeric values, while test-prob should either be a numpy 1-d array with the predicted probability of positive class 1 for the test set. The output will be the same format as 2b.}
 			\begin{solution}
-				I
+					Implimented in \texttt{`q2.py'}.
 			\end{solution}
 			\item {\bf(Written) Fit ordinary (no regularization) logistic regression model with each of the four preprocessing steps above using the code in 2d. Report the accuracy rate and AUC on the training and test sets for the 4 preprocessing steps in a table}
 			\begin{solution}
@@ -222,7 +222,7 @@
 			\begin{solution}
 				
 			\end{solution}
-			\item {\bf (Code) Implement the Python function generate \texttt{train\_val(x, y, valsize)} that given the validation size splits the data randomly into train and validation splits. The function should return a dictionary \\
+			\item {\bf (Code) Implement the Python function \texttt{generate\_train\_val(x, y, valsize)} that given the validation size splits the data randomly into train and validation splits. The function should return a dictionary \\
 				\texttt{return \{"train-x": tr\_x, "train-y": tr\_y, "val-x": ts\_x, "val-y": ts\_y\}.}\\ 
 				The values for \texttt{‘train-x’} and \texttt{‘val-x’} are expected to be numpy 2d arrays of the same dimension as $x$, and split into the associated training and validation features. The values for \texttt{‘train-y’} and \texttt{‘val-y’} are expected to be a subset
 				of $y$ split accordingly. Note that each time this function is run, the splits could be different.}

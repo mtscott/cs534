@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.28)  30 SEP 2024 10:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.28)  1 OCT 2024 14:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1191,6 +1191,12 @@ in[]auc, "test-acc": test[]acc,
 
 [2{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }]
+Overfull \hbox (30.43623pt too wide) in paragraph at lines 225--229
+[]\OT1/cmr/bx/n/12 (Code) Im-ple-ment the Python func-tion \OT1/cmtt/m/n/12 gen
+erate[]train[]val(x, y, valsize)
+ []
+
+
 Overfull \hbox (14.51848pt too wide) in paragraph at lines 225--229
 \OT1/cmtt/m/n/12 return \OMS/cmtt/bx/n/12 f\OT1/cmtt/m/n/12 "train-x": tr[]x, "
 train-y": tr[]y, "val-x": ts[]x, "val-y":
@@ -1238,7 +1244,7 @@ xlive/2023/texmf-dist/fonts/type1/public/mathabx-type1/matha12.pfb></usr/local/
 texlive/2023/texmf-dist/fonts/type1/public/mathabx-type1/matha8.pfb></usr/local
 /texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/l
 ocal/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on cs534hw2.pdf (5 pages, 154604 bytes).
+Output written on cs534hw2.pdf (5 pages, 154797 bytes).
 PDF statistics:
  144 PDF objects out of 1000 (max. 8388607)
  105 compressed objects within 2 object streams
