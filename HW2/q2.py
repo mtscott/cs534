@@ -66,18 +66,21 @@ def eval_nb(trainx, trainy, testx, testy):
 
     # Calculating Probability
     test_prob = gnb.predict_proba(testx)
-    return {"train-acc": train_acc, "train-auc": train_auc,
+    test_prob = test_prob[1,:]
+
+    dict = {"train-acc": train_acc, "train-auc": train_auc,
             "test-acc": test_acc, "test-auc": test_auc,
             "test-prob": test_prob}
+    return dict
 
 
 def eval_lr(trainx, trainy, testx, testy):
     test_prob = np.zeros(testx.shape[0])
     # your code here
-    lr = LogisticRegression(random_state=19, penalty=None).fit(trainx, trainy)
+    lr = LogisticRegression(random_state=19,max_iter=5000,solver="newton-cg",  penalty=None).fit(trainx, trainy)
 
     y_train_pred = lr.predict(trainx)
-    y_test_pred = lr.predict(testy)
+    y_test_pred = lr.predict(testx)
     # cnf_mat_train = confusion_matrix(trainy, y_train_pred)
     # cnf_mat_test = confusion_matrix(testy, y_test_pred)
 
@@ -93,7 +96,11 @@ def eval_lr(trainx, trainy, testx, testy):
 
     # Calculating Probability
     test_prob = lr.predict_proba(testx)
-    return {"train-acc": train_acc, "train-auc": train_auc,
+    test_prob = test_prob[1,:]
+
+    dict = {"train-acc": train_acc, "train-auc": train_auc,
             "test-acc": test_acc, "test-auc": test_auc,
             "test-prob": test_prob}
+    
+    return dict
 
