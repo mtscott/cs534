@@ -145,23 +145,25 @@
 			0, 2] would mean that the 4th feature has the highest correlation to $\bfy$ followed by 2nd, then 1st , and lastly 3rd
 			feature.)
 			\begin{solution}
-				% Implimented in \texttt{q1.py}.
+				Implimented in \texttt{q1.py}.
 			\end{solution}
 			\item {\bf Code:} {\tt FeatureSelection.Lasso(x, y) } that takes in a numpy 2d array, $\bfx$, a numpy 1d array, $\bfy$, and returns the rank of the features in $\bfx$ based on coefficients of Lasso regression ($\ell^1$ regularization). The function should return a numpy array in descending order of the absolute magnitude of Lasso regression coefficient. do not
 			include features with zero Lasso coefficient. For example, for 4-features input $\bfX$, if Lasso coefficients are [2.3,
 			-4.5, 0, 7.6], we should return [3, 1, 0], to mean that the 4th feature has the highest coefficient followed by 2nd, then 1st , , and the 3rd feature is dropped. Note that the returned array is likely to be shorter than the original
 			dimension of $\bfX$.
 			\begin{solution}
-				% Implimented in \texttt{q1.py}.
+				Implimented in \texttt{q1.py}.
 			\end{solution}
 			\item {\bf Code:} {\tt FeatureSelection.stepwise(x, y)} that takes in a numpy 2d array, $\bfx$, a numpy 1d array, $\bfy$, and returns the rank of the features in $\bfx$ based by greedy adding one remaining feature at a time to the set. To do this, we try adding one remaining feature at a time to the set, train a linear regressor, and select next feature to add based on the highest decrease in RMSE. Stop the process when RMSE does not decrease. For simplicity, we do this process on the training set $\bfX$, but feel free to use cross validation for this step. See slides for details or read about reference implementation SequentialFeatureSelector. Return ranking of features in descending order of importance. Note that the returned array is likely to be shorter than the original dimension of $\bfX$.
 			\begin{solution}
-				
+					Implimented in \texttt{q1.py}.
 			\end{solution}
 			\item {\bf Written:} report up to 10 first features selected by each method 1a,1b, and 1c in a table. Comment on overlap and
 			differences in the resulting feature sets.
 			\begin{solution}
+				For the {\tt rank\_correlation} method, we arrived at $[24, 23,  8, 10,  9, 20,  6, 17, 22,  2]$. For the {\tt lasso} method, we arrived at, $[12, 22, 21, 20, 19, 17, 15, 14, 13, 24]$. Lastly, For the {\tt stepwise} method, we arrived at, $[12, 22, 20, 19, 17, 15, 14, 10, 24,  7]$. We see that {\tt lasso} and {\tt stepwise} give rather similar results with the first 7 out of 8 entries being the same. Additionally, we see 24 represented close to the bottom in both methods as well. Comparing either {\tt lasso} or {\tt stepwise} with {\tt rank\_correlation}, we see that the results are not all that similar. Of course all methods have 24, 20, 17, and 22, but whereas, {\tt lasso} starts with 22,20, and 17, {\tt rank\_correlation} has those entries at the end. Conversely, {\tt stepwise } has 24 as one of the last, but {\tt rank\_correlation} has it first. 
 				
+				Additionally, while {\tt lasso} and {\tt stepwise} have very similar results, {\tt stepwise} took noticibly longer to compute.
 			\end{solution}
 			\item {\bf Code:} {\tt Regression.Ridge(train\_x, train\_y, test\_x, test\_y):} Implement Ridge regression and returns prediction on test set similar to HW1. You may use {\tt sklearn} for the regressor implementation
 			\begin{solution}
@@ -184,7 +186,16 @@
 			and {\tt min\_items} and selecting the best configuration based on the validation set. Report the best configuration
 			and RMSE and R$^2$ obtained on validation set.
 			\begin{solution}
-				
+				max depth = 2 min=1{'train-rmse': 0.9710814885538052, 'train-r2': 0.11075240052065438, 'test-rmse': 0.9263770467806784, 'test-r2': -0.05816567665070438}
+				max = 2, min = 3 {'train-rmse': 0.9710814885538052, 'train-r2': 0.11075240052065438, 'test-rmse': 0.9263770467806786, 'test-r2': -0.0581656766507046}
+				max = 2, min = 5 {'train-rmse': 0.9710814885538052, 'train-r2': 0.11075240052065438, 'test-rmse': 0.9263770467806784, 'test-r2': -0.05816567665070438}
+				max depth = 5 min 1Tree Regressor:
+				{'train-rmse': 0.9262768557261435, 'train-r2': 0.26385519598795015, 'test-rmse': 1.0116562187956508, 'test-r2': -0.5049925470028667}
+				max depth =5, min = 3 {'train-rmse': 0.9253569559487326, 'train-r2': 0.2667751494724081, 'test-rmse': 1.0116562187956508, 'test-r2': -0.5049925470028664}
+				max = 5, max =5{'train-rmse': 0.9261954052795444, 'train-r2': 0.2641140879791416, 'test-rmse': 1.0116562187956508, 'test-r2': -0.5049925470028664}
+				max = 8, min =1 {'train-rmse': 0.8304318880014541, 'train-r2': 0.5244282269620424, 'test-rmse': 1.07060762395057, 'test-r2': -0.8876603515468597}
+				max = 8, min 3 {'train-rmse': 0.8316872965740683, 'train-r2': 0.5215459093942053, 'test-rmse': 1.0294738928507934, 'test-r2': -0.6138526404431388}
+				max = 8, min 5 {'train-rmse': 0.8413936190345813, 'train-r2': 0.498816394208888, 'test-rmse': 1.0220726960471527, 'test-r2': -0.5679408438248181}
 			\end{solution}
 			\item {\bf Written:} Train the regressor using best configuration on full dataset as training (train’=train+validation), and report RMSE and R$^2$ on test dataset. Compare performance of your tree regressor to the best performance of Ridge regression in 1f.
 			\begin{solution}
