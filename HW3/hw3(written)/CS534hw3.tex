@@ -24,6 +24,7 @@
 \usepackage{algorithm, algorithmicx, algpseudocode}
 \usepackage{stmaryrd}
 \usepackage{physics}
+\usepackage{mwe}
 
 
 % The following two packages - multirow and booktabs - are needed to create nice looking tables.
@@ -62,6 +63,11 @@
 \def\mydefb#1{\expandafter\def\csname cal#1\endcsname{\mathcal{#1}}}
 \def\mydefallb#1{\ifx#1\mydefallb\else\mydefb#1\expandafter\mydefallb\fi}
 \mydefallb aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ\mydefallb
+
+\def\mydefgreek#1{\expandafter\def\csname bf#1\endcsname{\text{\boldmath$\mathbf{\csname #1\endcsname}$}}}
+\def\mydefallgreek#1{\ifx\mydefallgreek#1\else\mydefgreek{#1}%
+	\lowercase{\mydefgreek{#1}}\expandafter\mydefallgreek\fi}
+\mydefallgreek {alpha}{Alpha}{beta}{Beta}{gamma}{Gamma}{delta}{Delta}{epsilon}{Epsilon}{varepsilon}{Varepsilon}{zeta}{Zeta}{eta}{Eta}{theta}{Theta}{iota}{Iota}{kappa}{Kappa}{lambda}{Lambda}{mu}{Mu}{nu}{Nu}{omicron}{Omicron}{pi}{Pi}{rho}{Rho}{sigma}{Sigma}{tau}{Tau}{upsilon}{Upsilon}{varphi}{phi}{Phi}{xi}{Xi}{chi}{Chi}{psi}{Psi}{omega}{Omega}\mydefallgreek
 
 %% Change this to just the normal N,Z,R,C,P,E
 \def\mydefb#1{\expandafter\def\csname bb#1\endcsname{\mathbb{#1}}}
@@ -161,48 +167,95 @@
 			\item {\bf Written:} report up to 10 first features selected by each method 1a,1b, and 1c in a table. Comment on overlap and
 			differences in the resulting feature sets.
 			\begin{solution}
-				For the {\tt rank\_correlation} method, we arrived at $[24, 23,  8, 10,  9, 20,  6, 17, 22,  2]$. For the {\tt lasso} method, we arrived at, $[12, 22, 21, 20, 19, 17, 15, 14, 13, 24]$. Lastly, For the {\tt stepwise} method, we arrived at, $[12, 22, 20, 19, 17, 15, 14, 10, 24,  7]$. We see that {\tt lasso} and {\tt stepwise} give rather similar results with the first 7 out of 8 entries being the same. Additionally, we see 24 represented close to the bottom in both methods as well. Comparing either {\tt lasso} or {\tt stepwise} with {\tt rank\_correlation}, we see that the results are not all that similar. Of course all methods have 24, 20, 17, and 22, but whereas, {\tt lasso} starts with 22,20, and 17, {\tt rank\_correlation} has those entries at the end. Conversely, {\tt stepwise } has 24 as one of the last, but {\tt rank\_correlation} has it first. 
+				For the {\tt rank\_correlation} method, we arrived at $[24, 23,  8, 10,  9,\cdots$ $20,  6, 17, 22,  2]$. For the {\tt lasso} method, we arrived at, $[12, 22, 21, 20, 19, 17, 15,\cdots$ $ 14, 13, 24]$. Lastly, For the {\tt stepwise} method, we arrived at, $[12, 22, 20, 19, 17, \cdots$ $15, 14, 10, 24,  7]$. We see that {\tt lasso} and {\tt stepwise} give rather similar results with the first 7 out of 8 entries being the same. Additionally, we see 24 represented close to the bottom in both methods as well. Comparing either {\tt lasso} or {\tt stepwise} with {\tt rank\_correlation}, we see that the results are not all that similar. Of course all methods have 24, 20, 17, and 22, but whereas, {\tt lasso} starts with 22,20, and 17, {\tt rank\_correlation} has those entries at the end. Conversely, {\tt stepwise } has 24 as one of the last, but {\tt rank\_correlation} has it first. 
 				
 				Additionally, while {\tt lasso} and {\tt stepwise} have very similar results, {\tt stepwise} took noticibly longer to compute.
 			\end{solution}
 			\item {\bf Code:} {\tt Regression.Ridge(train\_x, train\_y, test\_x, test\_y):} Implement Ridge regression and returns prediction on test set similar to HW1. You may use {\tt sklearn} for the regressor implementation
 			\begin{solution}
-				 
+				 Implimented in \texttt{q1.py}.
 			\end{solution}
 			\item {\bf Written:} use your code in 1e to train and test Ridge regression on the whole feature set (“No selection”), and on
 			top 10 features selected in 1a, 1b, 1c. Report in a table the RMSE and R$^2$ of the Ridge regressor on the
 			validation dataset and test dataset. Comment on differences/similarities of performance of Ridge regression
 			under the different feature selection methods.
 			\begin{solution}
-			
+				As we can see in Tab \ref{tab:selectionmethods}, by training on the full data set, we get considerably better training and test RMSE and R$^2$.
+			\begin{table}
+				\centering
+				\begin{tabular}{|c|c|c|c|c|}
+					\hline
+					Selection Method&Train RMSE  &Train r2  &Test RMSE  & Test r2  \\
+					\hline\hline
+					Full& {\bf 0.94963}& {\bf0.18675} & {\bf0.95906} & {\bf -0.21560}\\
+					Correlation&	0.49582  & 0.71419 & 1.41650 & -8.79686 \\
+					Lasso&  0.56684& 0.88240 &  0.97312& -1.49702 \\
+					Stepwise&  0.78201& 0.59070 & 1.05242 & -2.13966 \\
+					\hline
+				\end{tabular}
+				\caption{By changing the features selected, we see drastically different training and test accuracies.}
+				\label{tab:selectionmethods}
+			\end{table}
 			\end{solution}
 			\item {\bf Code:} {\tt Regression.DecisionTreeRegressor (train\_x, train\_y, test\_x, test\_y, max\_depth, min\_items):}
 			Implement Regression Tree training and prediction, and return prediction on validation and test sets similar to
 			HW1. You may use sklearn for the underlying regressor tree implementation.
 			\begin{solution}
-			
+			Implimented in \texttt{q1.py}.
 			\end{solution}
 			\item {\bf Written:} tune the hyperpameters of your regression tree in 1g on whole feature set by varying the {\tt max\_depth}
 			and {\tt min\_items} and selecting the best configuration based on the validation set. Report the best configuration
 			and RMSE and R$^2$ obtained on validation set.
 			\begin{solution}
-				max depth = 2 min=1{'train-rmse': 0.9710814885538052, 'train-r2': 0.11075240052065438, 'test-rmse': 0.9263770467806784, 'test-r2': -0.05816567665070438}
-				max = 2, min = 3 {'train-rmse': 0.9710814885538052, 'train-r2': 0.11075240052065438, 'test-rmse': 0.9263770467806786, 'test-r2': -0.0581656766507046}
-				max = 2, min = 5 {'train-rmse': 0.9710814885538052, 'train-r2': 0.11075240052065438, 'test-rmse': 0.9263770467806784, 'test-r2': -0.05816567665070438}
-				max depth = 5 min 1Tree Regressor:
-				{'train-rmse': 0.9262768557261435, 'train-r2': 0.26385519598795015, 'test-rmse': 1.0116562187956508, 'test-r2': -0.5049925470028667}
-				max depth =5, min = 3 {'train-rmse': 0.9253569559487326, 'train-r2': 0.2667751494724081, 'test-rmse': 1.0116562187956508, 'test-r2': -0.5049925470028664}
-				max = 5, max =5{'train-rmse': 0.9261954052795444, 'train-r2': 0.2641140879791416, 'test-rmse': 1.0116562187956508, 'test-r2': -0.5049925470028664}
-				max = 8, min =1 {'train-rmse': 0.8304318880014541, 'train-r2': 0.5244282269620424, 'test-rmse': 1.07060762395057, 'test-r2': -0.8876603515468597}
-				max = 8, min 3 {'train-rmse': 0.8316872965740683, 'train-r2': 0.5215459093942053, 'test-rmse': 1.0294738928507934, 'test-r2': -0.6138526404431388}
-				max = 8, min 5 {'train-rmse': 0.8413936190345813, 'train-r2': 0.498816394208888, 'test-rmse': 1.0220726960471527, 'test-r2': -0.5679408438248181}
+				\begin{table}
+					\centering
+					\begin{tabular}{|c|cc|cc|}
+						\hline
+						\begin{tabular}{c}
+							Parameters\\
+							({\tt max\_depth, min\_items})
+						\end{tabular}& Train RMSE & Train r2 & Test RMSE & Test r2\\
+						\hline\hline
+						(2,1) & 0.97108 & 0.11075 & 0.92638 & -0.05817\\
+						(2,3) & 0.97108 & 0.11075 & 0.92638 & -0.05817\\
+						(2,5) & {\bf 0.97108 }& {\bf0.11075} & {\bf0.92638} & {\bf-0.05817}\\
+						\hline
+						(5,1) & 0.92628 & 0.26386 & 1.01166 & -0.50499\\
+						(5,3) & 0.92536 & 0.26678 & 1.01166 & -0.50499\\
+						(5,5) & 0.92620 & 0.26411  & 1.01166 & -0.50499\\
+						\hline
+						(8,1) & 0.83043 & 0.52443 & 1.07061 & -0.88766\\
+						(8,3) & 0.83169 & 0.52155  & 1.02947 & -0.61385\\
+						(8,5) & 0.84739 & 0.49882 & 1.02207 & -0.56794\\
+						\hline
+					\end{tabular}
+					\caption{hey}
+					\label{tab:}
+				\end{table}
+			
+			
 			\end{solution}
 			\item {\bf Written:} Train the regressor using best configuration on full dataset as training (train’=train+validation), and report RMSE and R$^2$ on test dataset. Compare performance of your tree regressor to the best performance of Ridge regression in 1f.
 			\begin{solution}
-				
+				test-rmse': 0.9008751343964226, 'test-r2': 0.053630083197275025
 			\end{solution}
 			\item {\bf Written:} visualize top 3 levels in your decision tree in 1h and 1i. Compare the top-level features used by your
 			tree, with the features selected in 1d. Comment on overlap/order of importance of features in the two methods.
+			\begin{solution}
+				\begin{figure}
+				\centering
+				\begin{minipage}{0.49\textwidth}
+					\centering
+					\includegraphics[width=0.95\textwidth]{../decision_tree_h}
+					\caption{Decision Tree H}
+				\end{minipage}\hfill
+				\begin{minipage}{0.49\textwidth}
+					\centering
+					\includegraphics[width=0.95\textwidth]{../decision_tree_i} % second figure itself
+					\caption{Decision Tree I}
+				\end{minipage}
+				\end{figure}
+			\end{solution}
 		\end{enumerate}
 		\item {\bf Spam classification using Naïve Bayes, Random Forest, and GBDT} (50  pts, written + code):
 		We will use the same email spam dataset from HW2 the email spam dataset, which contains 4601 e-mail messages
@@ -215,28 +268,30 @@
 			training and test sets and the predicted probabilities for the test set: {\tt return \{"train-acc": train\_acc, "train-auc":
 				train\_auc, "test-acc": test\_acc, "test-auc": test\_auc, "test-prob": test\_prob\}}. The values for accuracy and AUC should be scalar numeric values, while test-prob should be a numpy 1-d array with the predicted probability for the positive class 1, for the test. Same format as HW2.
 			\begin{solution}
-				% Implimented in \texttt{elastic.py}.
+				 Implimented in \texttt{q3.py}.
 			\end{solution}
 			\item  {\bf Written:} Tune RandomForest for the Spam classification problem by optimizing the hyperparameters
 			{\tt num\_trees, max\_depth, min\_items} based on cross validation over the training set only. Report best configuration,
 			and average AUC and Accuracy across validation folds.
 			\begin{solution}
-				% Implimented in \texttt{elastic.py}.
+				RFC: (num=16,depth =15, items = 9):
+				{'train-acc': 0.9504282426182028, 'train-auc': 0.9430326310382581, 'val-acc': 0.9326284771947926, 'val-auc': 0.9246935273646747}
 			\end{solution}
-			\item {\bf Written:} Train Random forest on all training data with using best hyperparameters identified in 1c, and report
+			\item {\bf Written:} Train Random forest on all training data with using best hyperparameters identified in 2b, and report
 			AUC, F1, and Accuracy on the test set. Compare in a table to the performance to NB and LR from Homework 2.
 			\begin{solution}
-				
+				Best Params:
+				{'train-acc': 0.9493164388129376, 'train-auc': 0.941931211339843, 'test-acc': 0.9275, 'test-auc': 0.9185817560823003, 'f1-score': 0.9079365079365079, 'test-prob': array([0.99657635, 0.00342365])}
 			\end{solution}
 			\item {\bf Written:} Report top 10 most important features for NB and RF (describe your criteria chosen for “most
 			important” in each case).
 			\begin{solution}
-				
+				computed as the mean and standard deviation of accumulation of the impurity decrease within each tree.
 			\end{solution}
 			\item {\bf Code:} Write a Python function {\tt eval\_gbdt(trainx, trainy, testx, testy, num\_estimators, learning\_rate)} that fits
 			a GradientBoostingClassifier model to the training data. You can use {\tt sklearn} module for this part. The function should accept as input numpy 2d arrays, and return a dictionary containing the accuracy and AUC for the training and test sets and the predicted probabilities for the test set: {\tt return \{"train-acc": train\_acc, "train-auc": train\_auc, "test-acc": test\_acc, "test-auc": test\_auc, "test-prob": test\_prob\}}. The values for accuracy and AUC should be scalar numeric values, while test-prob should be a numpy 1-d array with the predicted probability for the positive class 1, for the test. Same format as HW2.
 			\begin{solution}
-				
+				 Implimented in \texttt{q3.py}.
 			\end{solution}
 			\item {\bf Written:} Tune GBDT for the Spam classification problem by optimizing the hyperparameters {\tt num\_estimators} and {\tt learning\_rate} at least (you may choose to tune others). Use cross validation over the training set only. Report the best configuration, and the average AUC, F1, and Accuracy across validation folds.
 			\begin{solution}
@@ -245,7 +300,8 @@
 			\item {\bf Written:} Train GBDT on all training data with your best hyperparameters, and report AUC, F1, and Accuracy
 			on the test set. Compare in a table to the performance of RF and NB. Comment on relative improvements / performance for this problem by the three different models.
 			\begin{solution}
-			
+			Best Params:
+			{'train-acc': 0.6153333333333333, 'train-auc': 0.5, 'test-acc': 0.5883822610868208, 'test-auc': 0.5, 'f1-score': 0.0, 'test-prob': array([0.61536766, 0.38463234])}
 			\end{solution}
 		\end{enumerate}
 		

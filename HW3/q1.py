@@ -1,6 +1,6 @@
 import numpy as np
 # from matplotlib import pyplot
-# import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 # import pandas as pd
 from sklearn import linear_model
 import sklearn.linear_model as skl
@@ -13,22 +13,24 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_curve, auc, confusion_matrix
 import sklearn.metrics as skm
 from sklearn.metrics import r2_score, root_mean_squared_error
+from sklearn import tree
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.feature_selection import r_regression, SequentialFeatureSelector
 from scipy import stats
 from scipy.stats import pearsonr
 
 
-class FeatureSelection:  
-
-    def rank_correlation(self, x, y):
+class FeatureSelection: 
+    @staticmethod
+    def rank_correlation(x, y):
        ranks = np.zeros(y.shape[0])
        #your code here
        ranks = r_regression(x, y)
        ranks = np.argsort(np.abs(ranks))
        return ranks
 
-    def lasso(self, x, y):
+    @staticmethod
+    def Lasso(x, y):
        #ranks = np.zeros(y.shape[0])
        # your code here
        las = skl.Lasso(alpha = 0.01)
@@ -36,7 +38,8 @@ class FeatureSelection:
        ranks = np.argsort(np.abs(las.coef_))
        return ranks
 
-    def stepwise(self, x, y):
+    @staticmethod
+    def stepwise(x, y):
         # ranks = np.zeros(y.shape[0])
         # your code here
         linreg = skl.LinearRegression()
@@ -46,7 +49,8 @@ class FeatureSelection:
         return ranks
 
 class Regression:
-    def ridge_lr(self, train_x, train_y, test_x, test_y):
+    @staticmethod
+    def Ridge(train_x, train_y, test_x, test_y):
         test_prob = np.zeros(test_x.shape[0])
         # Create ridge regression object
         ridg = skl.Ridge()
@@ -73,9 +77,10 @@ class Regression:
         }
         return test_prob
 
-    def tree_regression(self, train_x, train_y, test_x, test_y):
+    @staticmethod
+    def DecisionTreeRegressor(train_x, train_y, test_x, test_y, max_depth, min_items):
         test_prob = np.zeros(test_x.shape[0])
-        regr_1 = DecisionTreeRegressor(max_depth=2, min_samples_leaf=5)
+        regr_1 = DecisionTreeRegressor(max_depth=max_depth, min_samples_leaf=min_items)
         regr_1.fit(train_x, train_y)
 
         train_pred = regr_1.predict(train_x)
@@ -85,6 +90,8 @@ class Regression:
         tr_r2 = r2_score(train_y,train_pred)
         te_rmse = np.sqrt(root_mean_squared_error(test_y,test_pred))
         te_r2 = r2_score(test_y,test_pred)
+
+        
 
         test_prob = {
             'train-rmse':  tr_rmse,

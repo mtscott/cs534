@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.28)  19 OCT 2024 13:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.28)  26 OCT 2024 19:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -996,10 +996,47 @@ File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 \l__pdf_internal_box=\box115
 ))
 Package: xparse 2023-02-02 L3 Experimental document command parser
-)) (/usr/local/texlive/2023/texmf-dist/tex/latex/multirow/multirow.sty
+)) (/usr/local/texlive/2023/texmf-dist/tex/latex/mwe/mwe.sty
+Package: mwe 2018/03/30 v0.5 Package to support minimal working examples (MWE)
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.sty
+(/usr/local/texlive/2023/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2023-02-02 LaTeX2e option processing using LaTeX3 keys
+)
+Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count342
+\l__lipsum_a_int=\count343
+\l__lipsum_b_int=\count344
+(/usr/local/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
+(/usr/local/texlive/2023/texmf-dist/tex/latex/blindtext/blindtext.sty
+Package: blindtext 2012/01/06 V2.0 blindtext-Package
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+\c@blindtext=\count345
+\c@Blindtext=\count346
+\c@blind@countparstart=\count347
+\blind@countxx=\count348
+\blindtext@numBlindtext=\count349
+\blind@countyy=\count350
+\c@blindlist=\count351
+\c@blindlistlevel=\count352
+\c@blindlist@level=\count353
+\blind@listitem=\count354
+\c@blind@listcount=\count355
+\c@blind@levelcount=\count356
+\blind@mathformula=\count357
+\blind@Mathformula=\count358
+\c@blind@randomcount=\count359
+\c@blind@randommax=\count360
+\c@blind@pangramcount=\count361
+\c@blind@pangrammax=\count362
+))
+(/usr/local/texlive/2023/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip79
-\multirow@cntb=\count342
+\multirow@cntb=\count363
 \multirow@dima=\skip80
 \bigstrutjot=\dimen301
 )
@@ -1015,41 +1052,41 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen309
 \cmidrulekern=\dimen310
 \defaultaddspace=\dimen311
-\@cmidla=\count343
-\@cmidlb=\count344
+\@cmidla=\count364
+\@cmidlb=\count365
 \@aboverulesep=\dimen312
 \@belowrulesep=\dimen313
-\@thisruleclass=\count345
-\@lastruleclass=\count346
+\@thisruleclass=\count366
+\@lastruleclass=\count367
 \@thisrulewidth=\dimen314
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 )
-\c@theorem=\count347
-\c@definition=\count348
+\c@theorem=\count368
+\c@definition=\count369
 
 (./CS534hw3.aux)
 \openout1 = `CS534hw3.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for U/mathx/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for U/mathx/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1085,20 +1122,20 @@ LaTeX Font Info:    ... okay on input line 98.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Command `\dddot' is already robust on input line 98.
-LaTeX Info: Command `\ddddot' is already robust on input line 98.
+LaTeX Info: Command `\dddot' is already robust on input line 104.
+LaTeX Info: Command `\ddddot' is already robust on input line 104.
 (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count349
+\scratchcounter=\count370
 \scratchdimen=\dimen315
 \scratchbox=\box116
-\nofMPsegments=\count350
-\nofMParguments=\count351
+\nofMPsegments=\count371
+\nofMParguments=\count372
 \everyMPshowfont=\toks47
-\MPscratchCnt=\count352
+\MPscratchCnt=\count373
 \MPscratchDim=\dimen316
-\MPnumerator=\count353
-\makeMPintoPDFobject=\count354
+\MPnumerator=\count374
+\makeMPintoPDFobject=\count375
 \everyMPtoPDFconversion=\toks48
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1109,7 +1146,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 98.
+Package hyperref Info: Link coloring OFF on input line 104.
 
 (./CS534hw3.out) (./CS534hw3.out)
 \@outlinefile=\write4
@@ -1120,122 +1157,137 @@ Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 112
+LaTeX Font Info:    Trying to load font information for U+msa on input line 118
 .
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 112
+LaTeX Font Info:    Trying to load font information for U+msb on input line 118
 .
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 1
-12.
+18.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (53.2049pt too wide) in paragraph at lines 164--165
-[]\OT1/cmr/m/it/12 Solution. []\OT1/cmr/m/n/12 For the \OT1/cmtt/m/n/12 rank[]c
-orrelation \OT1/cmr/m/n/12 method, we ar-rived at $\U/matha/m/n/12 r\OT1/cmr/m/
-n/12 24\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 23\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 
-8\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 10\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 9\OML/
-cmm/m/it/12 ; \OT1/cmr/m/n/12 20\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 6\OML/cmm/m/
-it/12 ; \OT1/cmr/m/n/12 17\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 22\OML/cmm/m/it/12
- ; \OT1/cmr/m/n/12 2\U/matha/m/n/12 s$\OT1/cmr/m/n/12 .
+Overfull \hbox (7.2868pt too wide) in paragraph at lines 170--171
+\OT1/cmr/m/n/12 20\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 6\OML/cmm/m/it/12 ; \OT1/c
+mr/m/n/12 17\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 22\OML/cmm/m/it/12 ; \OT1/cmr/m/
+n/12 2\U/matha/m/n/12 s$\OT1/cmr/m/n/12 . For the \OT1/cmtt/m/n/12 lasso \OT1/c
+mr/m/n/12 method, we ar-rived at, $\U/matha/m/n/12 r\OT1/cmr/m/n/12 12\OML/cmm/
+m/it/12 ; \OT1/cmr/m/n/12 22\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 21\OML/cmm/m/it/
+12 ; \OT1/cmr/m/n/12 20\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 19\OML/cmm/m/it/12 ; 
+\OT1/cmr/m/n/12 17\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 15\OML/cmm/m/it/12 ; [] $
  []
 
 
-Overfull \hbox (3.39063pt too wide) in paragraph at lines 164--165
-\OT1/cmr/m/n/12 For the \OT1/cmtt/m/n/12 lasso \OT1/cmr/m/n/12 method, we ar-ri
-ved at, $\U/matha/m/n/12 r\OT1/cmr/m/n/12 12\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 
-22\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 21\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 20\OM
-L/cmm/m/it/12 ; \OT1/cmr/m/n/12 19\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 17\OML/cmm
-/m/it/12 ; \OT1/cmr/m/n/12 15\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 14\OML/cmm/m/it
-/12 ; \OT1/cmr/m/n/12 13\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 24\U/matha/m/n/12 s$
-\OT1/cmr/m/n/12 . Lastly,
+Overfull \hbox (6.54956pt too wide) in paragraph at lines 170--171
+\OT1/cmr/m/n/12 14\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 13\OML/cmm/m/it/12 ; \OT1/
+cmr/m/n/12 24\U/matha/m/n/12 s$\OT1/cmr/m/n/12 . Lastly, For the \OT1/cmtt/m/n/
+12 stepwise \OT1/cmr/m/n/12 method, we ar-rived at, $\U/matha/m/n/12 r\OT1/cmr/
+m/n/12 12\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 22\OML/cmm/m/it/12 ; \OT1/cmr/m/n/1
+2 20\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 19\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 17\
+OML/cmm/m/it/12 ; [] $
  []
 
 
-Overfull \hbox (6.24152pt too wide) in paragraph at lines 168--169
+Overfull \hbox (6.24152pt too wide) in paragraph at lines 174--175
 []\OT1/cmr/bx/n/12 Code: \OT1/cmtt/m/n/12 Regression.Ridge(train[]x, train[]y, 
 test[]x, test[]y): \OT1/cmr/m/n/12 Im-ple-ment
  []
 
-
-Overfull \hbox (46.54091pt too wide) in paragraph at lines 189--199
-\OT1/cmr/m/n/12 0.11075240052065438, 'test-rmse': 0.9263770467806784, 'test-r2'
-: -0.05816567665070438
- []
-
-
-Overfull \hbox (33.02855pt too wide) in paragraph at lines 189--199
-\OT1/cmr/m/n/12 max = 2, min = 3 'train-rmse': 0.9710814885538052, 'train-r2': 
-0.11075240052065438,
- []
-
-
-Overfull \hbox (52.64224pt too wide) in paragraph at lines 189--199
-\OT1/cmr/m/n/12 min 1Tree Re-gres-sor: 'train-rmse': 0.9262768557261435, 'train
--r2': 0.26385519598795015,
- []
-
-
-Overfull \hbox (69.3879pt too wide) in paragraph at lines 189--199
-\OT1/cmr/m/n/12 rmse': 0.8413936190345813, 'train-r2': 0.498816394208888, 'test
--rmse': 1.0220726960471527,
- []
-
 [2]
+<../decision_tree_h.png, id=36, 346.896pt x 208.1376pt>
+File: ../decision_tree_h.png Graphic file (type png)
+<use ../decision_tree_h.png>
+Package pdftex.def Info: ../decision_tree_h.png  used on input line 249.
+(pdftex.def)             Requested size: 211.91782pt x 127.15112pt.
+<../decision_tree_i.png, id=38, 346.896pt x 208.1376pt>
+File: ../decision_tree_i.png Graphic file (type png)
+<use ../decision_tree_i.png>
+Package pdftex.def Info: ../decision_tree_i.png  used on input line 254.
+(pdftex.def)             Requested size: 211.91782pt x 127.15112pt.
 LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
-215.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 215.
+268.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 268.
 
 
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 215.
+(Font)              for symbol `textbraceleft' on input line 268.
 
 
-Overfull \hbox (8.94171pt too wide) in paragraph at lines 213--217
+Overfull \hbox (8.94171pt too wide) in paragraph at lines 266--270
 []\OT1/cmr/bx/n/12 Code: \OT1/cmr/m/n/12 Write a Python func-tion \OT1/cmtt/m/n
 /12 eval[]randomforest(trainx, trainy, testx,
  []
 
 
-Overfull \hbox (0.24307pt too wide) in paragraph at lines 213--217
+Overfull \hbox (0.24307pt too wide) in paragraph at lines 266--270
 \OT1/cmtt/m/n/12 testy, num[]trees, max[]depth, min[]items) \OT1/cmr/m/n/12 tha
 t fits a Ran-dom For-est model
  []
 
 
-Overfull \hbox (20.86847pt too wide) in paragraph at lines 213--217
+Overfull \hbox (20.86847pt too wide) in paragraph at lines 266--270
 \OT1/cmtt/m/n/12 train[]auc, "test-acc": test[]acc, "test-auc": test[]auc, "tes
 t-prob":
  []
 
+[3 <../decision_tree_h.png> <../decision_tree_i.png>]
+Overfull \hbox (16.10747pt too wide) in paragraph at lines 277--279
+[]\OT1/cmr/m/it/12 Solution. []\OT1/cmr/m/n/12 RFC: (num=16,depth =15, items = 
+9): 'train-acc': 0.9504282426182028,
+ []
 
-Overfull \hbox (2.76671pt too wide) in paragraph at lines 236--238
+
+Overfull \hbox (82.24748pt too wide) in paragraph at lines 277--279
+\OT1/cmr/m/n/12 'train-auc': 0.9430326310382581, 'val-acc': 0.9326284771947926,
+ 'val-auc': 0.9246935273646747 
+ []
+
+
+Overfull \hbox (51.096pt too wide) in paragraph at lines 283--285
+[]\OT1/cmr/m/it/12 Solution. []\OT1/cmr/m/n/12 Best Params: 'train-acc': 0.9493
+164388129376, 'train-auc': 0.941931211339843,
+ []
+
+
+Overfull \hbox (16.18706pt too wide) in paragraph at lines 283--285
+\OT1/cmr/m/n/12 'test-acc': 0.9275, 'test-auc': 0.9185817560823003, 'f1-score':
+ 0.9079365079365079,
+ []
+
+
+Overfull \hbox (2.76671pt too wide) in paragraph at lines 291--293
 []\OT1/cmr/bx/n/12 Code: \OT1/cmr/m/n/12 Write a Python func-tion \OT1/cmtt/m/n
 /12 eval[]gbdt(trainx, trainy, testx, testy,
  []
 
 
-Overfull \hbox (6.1756pt too wide) in paragraph at lines 236--238
+Overfull \hbox (6.1756pt too wide) in paragraph at lines 291--293
 \OT1/cmtt/m/n/12 num[]estimators, learning[]rate) \OT1/cmr/m/n/12 that fits a G
 ra-di-ent-Boost-ing-Clas-si-fier model
  []
 
 
-Overfull \hbox (20.86847pt too wide) in paragraph at lines 236--238
+Overfull \hbox (20.86847pt too wide) in paragraph at lines 291--293
 \OT1/cmtt/m/n/12 train[]auc, "test-acc": test[]acc, "test-auc": test[]auc, "tes
 t-prob":
  []
 
-[3] [4] (./CS534hw3.aux)
+
+Overfull \hbox (41.90623pt too wide) in paragraph at lines 303--305
+\OT1/cmr/m/n/12 acc': 0.5883822610868208, 'test-auc': 0.5, 'f1-score': 0.0, 'te
+st-prob': ar-ray([0.61536766,
+ []
+
+[4] [5] (./CS534hw3.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -1243,13 +1295,13 @@ Package rerunfilecheck Info: File `CS534hw3.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 27780 strings out of 476025
- 525969 string characters out of 5790016
- 1865388 words of memory out of 5000000
- 47741 multiletter control sequences out of 15000+600000
+ 28528 strings out of 476025
+ 541997 string characters out of 5790016
+ 1869388 words of memory out of 5000000
+ 48458 multiletter control sequences out of 15000+600000
  523334 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,12n,104p,908b,696s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,17n,104p,934b,698s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 ></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
@@ -1260,10 +1312,10 @@ ocal/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
 cal/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/loc
 al/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/loca
 l/texlive/2023/texmf-dist/fonts/type1/public/mathabx-type1/matha12.pfb>
-Output written on CS534hw3.pdf (4 pages, 123217 bytes).
+Output written on CS534hw3.pdf (5 pages, 260850 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
- 25 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 116 PDF objects out of 1000 (max. 8388607)
+ 84 compressed objects within 1 object stream
+ 29 named destinations out of 1000 (max. 500000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
 
