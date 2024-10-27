@@ -207,6 +207,7 @@
 			and {\tt min\_items} and selecting the best configuration based on the validation set. Report the best configuration
 			and RMSE and R$^2$ obtained on validation set.
 			\begin{solution}
+				By iterating over \texttt{max\_depth = } [2,5,8], \texttt{min\_items} = [1,3,5], we were able to see the dependence on these parameters in terms of training the regression tree. (2,5) won. Alll results are seen in Tab \ref{tab:tuning_dtr_params}.
 				\begin{table}
 					\centering
 					\begin{tabular}{|c|cc|cc|}
@@ -229,30 +230,35 @@
 						(8,5) & 0.84739 & 0.49882 & 1.02207 & -0.56794\\
 						\hline
 					\end{tabular}
-					\caption{hey}
-					\label{tab:}
+					\caption{Tuning the hyperparameters for a Decision Tree Regressor. Bolded is best.}
+					\label{tab:tuning_dtr_params}
 				\end{table}
 			
 			
 			\end{solution}
 			\item {\bf Written:} Train the regressor using best configuration on full dataset as training (train’=train+validation), and report RMSE and R$^2$ on test dataset. Compare performance of your tree regressor to the best performance of Ridge regression in 1f.
 			\begin{solution}
-				test-rmse': 0.9008751343964226, 'test-r2': 0.053630083197275025
+				Using the full data set, we computed, the following dictionary:
+				\[\{\texttt{'test-rms'}: 0.90088, \quad \texttt{'test-r2'}: 0.05363.\}\]
+				We are able to see that our test RMSE is lower and our R$^2$ value is more positive but smaller in magnitude. I feel that a positive correlation is better, so a success on both counts.
 			\end{solution}
 			\item {\bf Written:} visualize top 3 levels in your decision tree in 1h and 1i. Compare the top-level features used by your
 			tree, with the features selected in 1d. Comment on overlap/order of importance of features in the two methods.
 			\begin{solution}
+				We see the decision trees for 1h and 1i in Fig \ref{fig:1h} and Fig. \ref{fig:1i}, respectively. 17 appears in both, which is good because feature 17 was mentioned in every single feature selection method.16 and 21 were mentioned once each and were mentioned in just one of the feature selection methods.
 				\begin{figure}
 				\centering
 				\begin{minipage}{0.49\textwidth}
 					\centering
 					\includegraphics[width=0.95\textwidth]{../decision_tree_h}
 					\caption{Decision Tree H}
+					\label{fig:1h}
 				\end{minipage}\hfill
 				\begin{minipage}{0.49\textwidth}
 					\centering
 					\includegraphics[width=0.95\textwidth]{../decision_tree_i} % second figure itself
 					\caption{Decision Tree I}
+					\label{fig:1i}
 				\end{minipage}
 				\end{figure}
 			\end{solution}
@@ -274,19 +280,29 @@
 			{\tt num\_trees, max\_depth, min\_items} based on cross validation over the training set only. Report best configuration,
 			and average AUC and Accuracy across validation folds.
 			\begin{solution}
-				RFC: (num=16,depth =15, items = 9):
-				{'train-acc': 0.9504282426182028, 'train-auc': 0.9430326310382581, 'val-acc': 0.9326284771947926, 'val-auc': 0.9246935273646747}
+				By going from 1 to 16 estimators, 1 to 15 depth and 1 to 15 items per leaf, we found that the best was 16 estimators, max depth of 15 and 9 min items. The resulted in the following corss validated data.\\
+				
+				{'train-acc': 0.95043, 'train-auc': 0.94303, 'val-acc': 0.93263, 'val-auc': 0.92469}
 			\end{solution}
 			\item {\bf Written:} Train Random forest on all training data with using best hyperparameters identified in 2b, and report
 			AUC, F1, and Accuracy on the test set. Compare in a table to the performance to NB and LR from Homework 2.
 			\begin{solution}
-				Best Params:
-				{'train-acc': 0.9493164388129376, 'train-auc': 0.941931211339843, 'test-acc': 0.9275, 'test-auc': 0.9185817560823003, 'f1-score': 0.9079365079365079, 'test-prob': array([0.99657635, 0.00342365])}
+				Using the best Params (num=16, depth=15, items =9) on the full data set, we found\\
+				
+				{'train-acc': 0.94932, 'train-auc': 0.94193, 'test-acc': 0.9275, 'test-auc': 0.91858, 'f1-score': 0.90794, 'test-prob': array([0.99657635, 0.00342365])}
 			\end{solution}
 			\item {\bf Written:} Report top 10 most important features for NB and RF (describe your criteria chosen for “most
 			important” in each case).
 			\begin{solution}
-				computed as the mean and standard deviation of accumulation of the impurity decrease within each tree.
+				Not knowing how to approach this problem, I consulted sklearn. They have a feature selection tool which finds the features that are computed as the mean and standard deviation of accumulation of the impurity decrease within each tree. It produced the following plot
+				\begin{figure}
+					\centering
+					\includegraphics[width=0.7\linewidth]{../rfc_features}
+					\caption{Features which reduce the standard deviation the most by adding them}
+					\label{fig:rfcfeatures}
+				\end{figure}
+				In Fig. \ref{fig:rfcfeatures}, we see that the features at the beginning and end tend to be the most important as they have the highest values.
+				
 			\end{solution}
 			\item {\bf Code:} Write a Python function {\tt eval\_gbdt(trainx, trainy, testx, testy, num\_estimators, learning\_rate)} that fits
 			a GradientBoostingClassifier model to the training data. You can use {\tt sklearn} module for this part. The function should accept as input numpy 2d arrays, and return a dictionary containing the accuracy and AUC for the training and test sets and the predicted probabilities for the test set: {\tt return \{"train-acc": train\_acc, "train-auc": train\_auc, "test-acc": test\_acc, "test-auc": test\_auc, "test-prob": test\_prob\}}. The values for accuracy and AUC should be scalar numeric values, while test-prob should be a numpy 1-d array with the predicted probability for the positive class 1, for the test. Same format as HW2.
@@ -295,13 +311,15 @@
 			\end{solution}
 			\item {\bf Written:} Tune GBDT for the Spam classification problem by optimizing the hyperparameters {\tt num\_estimators} and {\tt learning\_rate} at least (you may choose to tune others). Use cross validation over the training set only. Report the best configuration, and the average AUC, F1, and Accuracy across validation folds.
 			\begin{solution}
-				
+				We were able to iterate through many different estimators (1-15) and many different learning rates (0.1,0.01,0.001,0.0001,0.00001). We found the best was 12 estimatros and 0.0001 learing rate. The following was the results
+				{'train-acc': 0.94932, 'train-auc': 0.94193, 'test-acc': 0.9275, 'test-auc': 0.91858, 'f1-score': 0.90794, 'test-prob': array([0.99657635, 0.00342365])}. This was better than NB on the last homework.
 			\end{solution}
 			\item {\bf Written:} Train GBDT on all training data with your best hyperparameters, and report AUC, F1, and Accuracy
 			on the test set. Compare in a table to the performance of RF and NB. Comment on relative improvements / performance for this problem by the three different models.
 			\begin{solution}
 			Best Params:
 			{'train-acc': 0.6153333333333333, 'train-auc': 0.5, 'test-acc': 0.5883822610868208, 'test-auc': 0.5, 'f1-score': 0.0, 'test-prob': array([0.61536766, 0.38463234])}
+			This is much worse than NB. I don't know what happened but by training on the whole data set all at once, it didn't seem to work well.
 			\end{solution}
 		\end{enumerate}
 		
