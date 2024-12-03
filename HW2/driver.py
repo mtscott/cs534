@@ -99,8 +99,8 @@ max3 = 0
 max4 = 0
 
 for c in np.arange(0.1,1,0.1):
-    ridge_lr = LogisticRegression(random_state=19,max_iter=5000,solver="liblinear", C = 1./c, penalty='l2')
-    lasso_lr = LogisticRegression(random_state=19,max_iter=5000,solver="liblinear", C = 1./c, penalty='l1')
+    ridge_lr = LogisticRegression(max_iter=5000, C = 1./c, penalty='l2')
+    lasso_lr = LogisticRegression(max_iter=5000, solver='liblinear', C = 1./c, penalty='l1')
 
     results_1r = eval_kfold(x, y, 5, ridge_lr)
     if results_1r['val-acc'] >= max1:
@@ -145,8 +145,8 @@ max4 = 0
 
 for vs in np.array([46,92,138]):
     for c in np.arange(0.001,1.00000001,0.1):
-        ridge_lr = LogisticRegression(random_state=19,max_iter=5000,solver="liblinear", C = 1./c, penalty='l2')
-        lasso_lr = LogisticRegression(random_state=19,max_iter=5000,solver="liblinear", C = 1./c, penalty='l1')
+        ridge_lr = LogisticRegression(max_iter=5000, C = 1./c, penalty='l2')
+        lasso_lr = LogisticRegression(max_iter=5000, solver = 'liblinear', C = 1./c, penalty='l1')
 
         results_1r = eval_mccv(x, y, vs, 5, ridge_lr)
         if results_1r['val-acc'] >= max1:
@@ -191,11 +191,11 @@ print(f"Value Size for Ridge k=10:\t{vs2}\n")
 print(f"Value Size for Lasso k=5:\t{vs3}\n")
 print(f"Value Size for Lasso k=10:\t{vs4}\n")
 
-ridge_kf = LogisticRegression(random_state=19,max_iter=5000,solver="liblinear", C = 1./0.530, penalty='l2')
-lasso_kf = LogisticRegression(random_state=19,max_iter=5000,solver="liblinear", C = 1./0.992, penalty='l1')
+ridge_kf = LogisticRegression(max_iter=5000, C = 1./0.530, penalty='l2')
+lasso_kf = LogisticRegression(max_iter=5000, solver='liblinear', C = 1./0.992, penalty='l1')
 
-ridge_mc = LogisticRegression(random_state=19,max_iter=5000,solver="liblinear", C = 1./0.950, penalty='l2')
-lasso_mc = LogisticRegression(random_state=19,max_iter=5000,solver="liblinear", C = 1./0.569, penalty='l1')
+ridge_mc = LogisticRegression(max_iter=5000, C = 1./0.950, penalty='l2')
+lasso_mc = LogisticRegression(max_iter=5000, solver = 'liblinear', C = 1./0.569, penalty='l1')
 
 dict_rk = eval_kfold(x, y, 10, ridge_kf)
 dict_lk = eval_kfold(x, y, 10, lasso_kf)

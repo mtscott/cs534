@@ -22,8 +22,8 @@ def generate_train_val(x, y, valsize):
     xy = np.hstack((x, y.reshape(n,1)))
     rng.shuffle(xy)
 
-    trainxy = xy[int(valsize+1):, :]
-    testxy = xy[:int(valsize),:]
+    trainxy = xy[int(np.round(valsize * n)):, :]
+    testxy = xy[:int(np.round(valsize * n)),:]
     train_x = trainxy[:,:-1]
     train_y = trainxy[:,-1]
     test_x = testxy[:,:-1]
@@ -37,7 +37,7 @@ def generate_train_val(x, y, valsize):
 def generate_kfold(x, y, k):
     # fold_assignments=np.zeros(x.shape[0])
     # your code here
-    fold_assignments = np.random.randint(k, size=x.shape[0])
+    fold_assignments = np.random.randint(k, size=(x.shape[0]))
     return fold_assignments
 
 
